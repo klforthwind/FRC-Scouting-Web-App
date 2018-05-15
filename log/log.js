@@ -31,6 +31,7 @@ function updateText() {
 function submit() {
   let d = new Date();
   let data = {
+    loc: getVal('loc'),
     matchNum: Number(getVal('matchNum')),
     teamNum: Number(getVal('teamNum')),
     autonOwn: num[txt.indexOf('ao')],
