@@ -1,0 +1,70 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js" ></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.2/firebase.js"></script>
+    <script src="https://apis.google.com/js/platform.js"></script>
+
+    <script lang="javascript" src="../main.js"></script>
+    <script lang="javascript" src="log.js"></script>
+    <link rel="stylesheet" type="text/css" href="log.css">
+
+  </head>
+  <body>
+    <div id="loginButtons">
+      <button id ="login" onclick="login()">Log in</button>
+      <button id ="logout"onclick="logout()">Log out</button>
+    </div>
+    <div id="content">
+      <p>Match Num</p>
+      <input type="text" class="text" id = "matchNum"></input>
+      <p>Team Number</p>
+      <input type="text" class="text" id = "teamNum"></input>
+      <table>
+        <tr>
+          <td onclick = "minus('ao')">-</td>
+          <td id="ao">Auton Own: 0</td>
+          <td onclick = "plus('ao')">+</td>
+        </tr>
+        <tr>
+          <td onclick = "minus('as')">-</td>
+          <td id="as">Auton Scale: 0</td>
+          <td onclick = "plus('as')">+</td>
+        </tr>
+        <tr>
+          <td onclick = "minus('to')">-</td>
+          <td id="to">Teleop Own: 0</td>
+          <td onclick = "plus('to')">+</td>
+        </tr>
+        <tr>
+          <td onclick = "minus('top')">-</td>
+          <td id="top">Teleop Opponent: 0</td>
+          <td onclick = "plus('top')">+</td>
+        </tr>
+        <tr>
+          <td onclick = "minus('ts')">-</td>
+          <td id="ts">Teleop Scale: 0</td>
+          <td onclick = "plus('ts')">+</td>
+        </tr>
+        <tr>
+          <td onclick = "minus('tv')">-</td>
+          <td id="tv">Teleop Vault: 0</td>
+          <td onclick = "plus('tv')">+</td>
+        </tr>
+        <tr>
+          <td onclick = "minus('ec')">-</td>
+          <td id="ec">End Climb: 0</td>
+          <td onclick = "plus('ec')">+</td>
+        </tr>
+      </table>
+      <script>reset(); setAccess();</script>
+      <p>Auton Comments</p>
+      <input type="text" class="text" id = "autonComments"></input>
+      <p>Comments</p>
+      <input type="text" class="text" id = "comments"></input>
+      <br />
+      <button onclick="submit()">Submit</button>
+    </div>
+  </body>
+</html>
