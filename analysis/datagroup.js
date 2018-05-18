@@ -23,16 +23,16 @@ class DataGroup {
 
   fillBestTeam() {
     if (this.twoCats) {
-      this.data = tr(td("TeamNumber") + td(this.inf1Name) +td(this.inf2Name));
+      this.data = tr(td("TeamNumber") + td(this.cat1Name) +td(this.cat1Name));
     } else {
-      this.data = tr(td("TeamNumber") + td(this.inf1Name));
+      this.data = tr(td("TeamNumber") + td(this.cat1Name));
     }
     this.loopMania();
     this.data = "<table>" + this.data + "</table>";
   }
 
   loopMania() {
-    var exempt = [];
+    var exempt = []; 
     for(var t = 0; t < teamList.length; t++) {
       var high = 0;
       var bestTeam = 0;
@@ -49,17 +49,17 @@ class DataGroup {
   }
 
   add(tN, id, score) {
-    if (this.twoVal) {
-      return tr(td(tN)+td(getAvg(this.info1, id))+
-      td(getAvg(this.info2, id)));
+    if (this.twoCats) {
+      return tr(td(tN)+td(getAvg(this.cat1, id))+
+      td(getAvg(this.cat2, id)));
     } else {
-      return tr(td(tN)+td(getAvg(this.info1, id)));
+      return tr(td(tN)+td(getAvg(this.cat1, id)));
     }
   }
 
   getScore(id) {
-      var val = getAvg(this.info1, id);
-      val += (this.twoVal) ? getAvg(this.info2, id) : 0;
+      var val = getAvg(this.cat1, id);
+      val += (this.twoCats) ? getAvg(this.cat2, id) : 0;
       if (val == undefined) {
         return teamList[id];
       } else {

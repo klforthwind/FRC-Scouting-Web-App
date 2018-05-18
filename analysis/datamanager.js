@@ -1,19 +1,35 @@
 class DataManager {
   constructor() {
-    // Variable = new DataGroup(Identifiable Name, Category One, Category Two)
-    this.own = new DataGroup("Own Switch", "Auton Cubes", "Teleop Cubes");
-    this.scale = new DataGroup("Scale", "Auton Cubes", "Teleop Cubes");
-    this.opp = new DataGroup("Opponent Switch", "Teleop Cubes");
-    this.vault = new DataGroup("Vault", "Cubes");
-    this.climb = new DataGroup("Did Climb / Ramped Other Bots", "Climb Count");
+    this.data = create2DArray(38, 20);
+    this.count = [];
+    this.empty();
   }
-  
-  addData(id, autonOwn, autonScale, teleOwn, teleOpponent,
-        teleScale, teleVault, endClimb) {
-          this.ownSwitch.addData(id, autonOwn, teleOwn);
-          this.scale.addData(id, autonScale, teleScale);
-          this.oppSwitch.addData(id, teleOpponent);
-          this.vault.addData(id, teleVault);
-          this.climb.addData(id, endClimb);
+
+  addData(id, packetOfData) {
+    this.data[id][count[id]] = packetOfData;
   }
+
+  empty() {
+    for (let t = 0; t < teamList.length; t++) {
+      count[t] = 0;
+    }
+  }
+}
+
+// Rows represent number of teams + insurance
+// Cols represent number of data entries per team
+function create2DArray(rows, cols) {
+  return [...Array(rows).keys()].map(i => Array(cols));
+}
+
+function tr(info) {
+  return "<tr>"+info+"</tr>";
+}
+
+function td(info) {
+  return "<td>"+info+"</td>";
+}
+
+function r(val) {
+	return Math.round(val * 100) / 100;
 }

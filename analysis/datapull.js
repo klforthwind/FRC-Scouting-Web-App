@@ -4,14 +4,12 @@ var teamList;
 var dataList;
 // Data Manager
 var man;
-// Amount of Data points per team
-var count;
 
 
 function gotData(data) {
   man = new DataManager();
   pullStats(data);
-  resetCounts();
+  man.empty();
   fillInfo();
 }
 
@@ -21,7 +19,6 @@ function pullStats(data) {
 
   teamList = [];
   dataList = [];
-  count = [];
 
   for (let i = 0; i < keys.length; i++) {
     //Grab a key
@@ -50,14 +47,6 @@ function pullStats(data) {
       }
       dataList[dataList.length] = data;
     }
-
-  }
-}
-
-// Make data point count 0 for every team
-function resetCounts() {
-  for (let t = 0; t < teamList.length; t++) {
-    count[t] = 0;
   }
 }
 
@@ -67,23 +56,21 @@ function fillInfo() {
   for (let d = 0; d < dataList.length; d++) {
     try {
       let slotNum = teamList.indexOf(dataList[d].teamNum);
-      let s = dataList[d];
-      man.addData(slotNum, s.autonOwn, s.autonScale, s.teleopOwn,
-         s.teleopOpponent, s.teleopScale, s.teleopVault, s.endClimb);
-      count[slotNum]++;
+      man.addData(slotNum, dataList[d]);
+      man.count[slotNum]++;
     } catch(err) {
-
+      console.log(err);
     }
   }
 }
 
-
+// Called when button is pressed
 function getStats() {
   let ref = database.ref('stats');
   ref.on('value', gotData, errData);
 }
 
-// Called by getStats in case things break
+// Called by getStats in the event things break
 function errData(err) {
   console.log('Error Grabbing Data!')
   console.log(err);
