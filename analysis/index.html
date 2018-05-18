@@ -8,6 +8,7 @@
 
     <script lang="javascript" src="../main.js"></script>
     <script lang="javascript" src="analysis.js"></script>
+    <script lang="javascript" src="stats.js"></script>
     <link rel="stylesheet" type="text/css" href="analysis.css">
 
   </head>
@@ -17,7 +18,12 @@
       <button id ="logout"onclick="logout()">Log out</button>
     </div>
     <div id="content">
-      <button onclick = "pullStats()"></button>
+      <button onclick = "getStats()">Pull Stats</button>
+      <button onclick = "showBestSwitchBots()">Best Switch Bots</button>
+      <button onclick = "showBestScaleBots()>">Best Scale Bots</button>
+      <button onclick = "showBestVaultBots()">Best Vault Bots</button>
+      <button onclick = "showBestOverallBots()">Best Overall Bots</button>
     </div>
+    <script>setAccess()</script>
   </body>
 </html>
