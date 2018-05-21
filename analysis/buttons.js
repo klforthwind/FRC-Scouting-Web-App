@@ -11,10 +11,6 @@ function showBestVaultBots() {
   showInfo(man.vault.data);
 }
 
-function showClimbTeams() {
-  showInfo(man.climb.data);
-}
-
 function showBestOverallBots() {
   showInfo(man.overall);
 }

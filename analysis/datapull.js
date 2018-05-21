@@ -55,9 +55,7 @@ function pullStats(data) {
 function fillInfo() {
   for (let d = 0; d < dataList.length; d++) {
     try {
-      let slotNum = teamList.indexOf(dataList[d].teamNum);
-      man.addData(slotNum, dataList[d]);
-      man.count[slotNum]++;
+      man.addData(teamList.indexOf(dataList[d].teamNum), dataList[d]);
     } catch(err) {
       console.log(err);
     }
